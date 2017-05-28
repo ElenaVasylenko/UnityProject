@@ -18,4 +18,20 @@ public class LevelController : MonoBehaviour {
 		rabit.transform.position = this.startingPosition;
 	}
 
+	public void addCoins(int n){
+		Debug.Log ("coins collected: " + n);
+	}
+
+	public void addFruits(int n){
+		Debug.Log ("fruits collected: " + n);
+	}
+
+	public void addCrystals(int n){
+		Debug.Log ("crystals collected: " + n);
+	}
+
+	public void oopsMushroom(int n){
+		Debug.Log ("mushroom catched: " + n);
+	}
+
 }
