@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mushroom : Collectable {
+public class Bomb : Collectable {
 
 	protected override void OnRabitHit (HeroRabbit rabit)
 	{
-		
 		//rabit.reduceHealth (1);
-		rabit.transform.localScale = Vector3.one * 2;
-		LevelController.current.oopsMushroom(1);
-		this.CollectedHide();
+		rabit.sizeNormalize ();
+		LevelController.current.oopsBomb(1);
+		this.CollectedHide ();
 	}
 }
+

@@ -49,6 +49,28 @@ public class HeroRabbit : MonoBehaviour {
 
 		this.onHealthChange ();
 	}
+
+	public void sizeNormalize(){
+		if (this.transform.localScale == Vector3.one * 2) {
+			this.transform.localScale = Vector3.one;
+
+			//TODO BONUS
+			/*SpriteRenderer sr = this.GetComponent<SpriteRenderer>();
+			var red_color = sr.color;
+			           
+			           red_color.r = 255;
+			           red_color.g = 0;
+					   red_color.b = 0;
+		               sr.color = red_color;*/
+
+		}else {
+			this.CurrentHealth = 0;
+			Debug.Log ("Rabbit is death");
+			this.onHealthChange ();
+			//LevelController.current.onRabitDeath (this);
+		}
+
+	}
 		
 	public void onHealthChange(){
 
@@ -77,6 +99,15 @@ public class HeroRabbit : MonoBehaviour {
 		} else {
 			animator.SetBool ("run", false);
 		}
+
+		//DEATH TO DO
+		/*if(this.CurrentHealth > 0) {
+			animator.SetBool ("die",false);
+		} else {
+			animator.SetBool ("die", true);
+			LevelController.current.onRabitDeath (this);
+			//LevelController.current.onRabitDeath (this);
+		}*/
 
 
 		if (Mathf.Abs(value) > 0)

@@ -12,10 +12,13 @@ public class LevelController : MonoBehaviour {
 	Vector3 startingPosition;
 	public void setStartPosition(Vector3 pos) {
 		this.startingPosition = pos;
+
 	}
 	public void onRabitDeath(HeroRabbit rabit) {
 		//При смерті кролика повертаємо на початкову позицію
+		//restore health
 		rabit.transform.position = this.startingPosition;
+		rabit.CurrentHealth = 3;
 	}
 
 	public void addCoins(int n){
@@ -31,7 +34,11 @@ public class LevelController : MonoBehaviour {
 	}
 
 	public void oopsMushroom(int n){
-		Debug.Log ("mushroom catched: " + n);
+		Debug.Log ("oops mushroom catched: " + n);
+	}
+
+	public void oopsBomb(int n){
+		Debug.Log ("oops bomb catched: " + n);
 	}
 
 }
