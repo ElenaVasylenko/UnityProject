@@ -7,7 +7,7 @@ public class Bomb : Collectable {
 	protected override void OnRabitHit (HeroRabbit rabit)
 	{
 		//rabit.reduceHealth (1);
-		rabit.sizeNormalize ();
+		rabit.sizeNormalize(3);
 		LevelController.current.oopsBomb(1);
 		this.CollectedHide ();
 	}

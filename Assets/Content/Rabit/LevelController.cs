@@ -17,10 +17,10 @@ public class LevelController : MonoBehaviour {
 	public void onRabitDeath(HeroRabbit rabit) {
 		//При смерті кролика повертаємо на початкову позицію
 		//restore health
-		rabit.transform.position = this.startingPosition;
 		rabit.CurrentHealth = 3;
+		rabit.transform.position = this.startingPosition;
 	}
-
+		
 	public void addCoins(int n){
 		Debug.Log ("coins collected: " + n);
 	}

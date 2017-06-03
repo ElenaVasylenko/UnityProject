@@ -14,14 +14,18 @@ public class HeroRabbit : MonoBehaviour {
 	float JumpTime = 0f;
 	public float MaxJumpTime = 2f;
 	public float JumpSpeed = 2f;
+	public bool orcIsDead = false;
 
 	// HEALTH
 	public static int MaxHealth = 3;
 	public int CurrentHealth = MaxHealth;
+	public static HeroRabbit lastRabbit = null;
 
-	// Use this for initialization
-	void Start()
-	{
+	void Awake() {
+		lastRabbit = this;
+	}
+
+	void Start(){
 		myBody = this.GetComponent<Rigidbody2D>();
 		this.heroParent = this.transform.parent;
 		LevelController.current.setStartPosition(transform.position);
@@ -50,7 +54,7 @@ public class HeroRabbit : MonoBehaviour {
 		this.onHealthChange ();
 	}
 
-	public void sizeNormalize(){
+	public void sizeNormalize(int n){
 		if (this.transform.localScale == Vector3.one * 2) {
 			this.transform.localScale = Vector3.one;
 
@@ -64,6 +68,7 @@ public class HeroRabbit : MonoBehaviour {
 		               sr.color = red_color;*/
 
 		}else {
+			reduceHealth(n);
 			this.CurrentHealth = 0;
 			Debug.Log ("Rabbit is death");
 			this.onHealthChange ();
@@ -71,20 +76,52 @@ public class HeroRabbit : MonoBehaviour {
 		}
 
 	}
+
+	IEnumerator ressurection(){
 		
+		Animator animator = GetComponent<Animator> ();
+		animator.SetBool("die",true);
+
+		yield return new WaitForSeconds (4.0f);
+		LevelController.current.onRabitDeath (this);
+		animator.SetBool("die",false);
+		animator.SetBool("run",true);
+
+	}
+
 	public void onHealthChange(){
 
 		if (this.CurrentHealth == 3) {
 			this.transform.localScale = Vector3.one;
-		//} //else if (this.CurrentHealth == 2) {
-			//this.transform.localScale = Vector3.one * 2;
-		//} else if (this.CurrentHealth == 3) {
-			//this.transform.localScale = Vector3.one * 3;
-		}else if (this.CurrentHealth == 0) {
-			LevelController.current.onRabitDeath (this);
+		} else if (this.CurrentHealth == 0) {
+			
+
+			StartCoroutine (ressurection ());
 		}
 
 	}
+
+
+	// NEW CODE
+	public void OnTriggerEnter2D(Collider2D collider){
+
+		if (this.CurrentHealth > 0 && orcIsDead == false) {
+			Orc1 orc = collider.gameObject.GetComponent<Orc1> ();
+
+			if (orc != null ) {
+				if (collider == orc.bodyCollider ) {
+					Debug.Log ("body!!!!!!!!!!!!!!!");
+					this.reduceHealth (3);
+				}
+				if (collider == orc.headCollider) {
+					Debug.Log ("head!!!!!!!!!!!");
+					orcIsDead = true;
+					orc.reduceHealth (3);
+				}
+			}
+		}
+	}
+
 
 	// Update is called once per frame
 	void FixedUpdate()
@@ -99,15 +136,6 @@ public class HeroRabbit : MonoBehaviour {
 		} else {
 			animator.SetBool ("run", false);
 		}
-
-		//DEATH TO DO
-		/*if(this.CurrentHealth > 0) {
-			animator.SetBool ("die",false);
-		} else {
-			animator.SetBool ("die", true);
-			LevelController.current.onRabitDeath (this);
-			//LevelController.current.onRabitDeath (this);
-		}*/
 
 
 		if (Mathf.Abs(value) > 0)
@@ -131,6 +159,7 @@ public class HeroRabbit : MonoBehaviour {
 		int layer_id = 1 << LayerMask.NameToLayer("Ground");
 		//Перевіряємо чи проходить лінія через Collider з шаром Ground
 		RaycastHit2D hit = Physics2D.Linecast(from, to, layer_id);
+
 		if (hit)
 		{
 			isGrounded = true;
