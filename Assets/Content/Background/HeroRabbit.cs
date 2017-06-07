@@ -16,6 +16,8 @@ public class HeroRabbit : MonoBehaviour {
 	public float JumpSpeed = 2f;
 	public bool orcIsDead = false;
 
+	//public bool rabbitIsBig = false;
+
 	// HEALTH
 	public static int MaxHealth = 3;
 	public int CurrentHealth = MaxHealth;
@@ -42,21 +44,30 @@ public class HeroRabbit : MonoBehaviour {
 		if (this.CurrentHealth > MaxHealth)
 			this.CurrentHealth = MaxHealth;
 
-		this.onHealthChange ();
+		//this.onHealthChange ();
 	}
 
 	public void reduceHealth(int n){
-		this.CurrentHealth -= n;
+		if (isRabbitBig ()) {
+			this.transform.localScale = Vector3.one;
+		} else {
+			Debug.Log ("REDUCED BY : " + n);
+			this.CurrentHealth -= n;
 
-		if (this.CurrentHealth < 0)
-			this.CurrentHealth = 0;
+			if (this.CurrentHealth < 0)
+				this.CurrentHealth = 0;
 
-		this.onHealthChange ();
+			StartCoroutine (ressurection ());
+		}
 	}
 
-	public void sizeNormalize(int n){
+	bool isRabbitBig(){
+		return this.transform.localScale == Vector3.one * 2;
+	}
+
+	/*public void sizeNormalize(int n){
 		if (this.transform.localScale == Vector3.one * 2) {
-			this.transform.localScale = Vector3.one;
+			this.transform.localScale = Vector3.one;*/
 
 			//TODO BONUS
 			/*SpriteRenderer sr = this.GetComponent<SpriteRenderer>();
@@ -67,15 +78,17 @@ public class HeroRabbit : MonoBehaviour {
 					   red_color.b = 0;
 		               sr.color = red_color;*/
 
-		}else {
+		/*}else {
 			reduceHealth(n);
-			this.CurrentHealth = 0;
+			//this.CurrentHealth = 0;
 			Debug.Log ("Rabbit is death");
-			this.onHealthChange ();
+			//this.onHealthChange ();
 			//LevelController.current.onRabitDeath (this);
 		}
 
-	}
+		this.onHealthChange ();
+
+	}*/
 
 	IEnumerator ressurection(){
 		
@@ -91,13 +104,11 @@ public class HeroRabbit : MonoBehaviour {
 
 	public void onHealthChange(){
 
-		if (this.CurrentHealth == 3) {
-			this.transform.localScale = Vector3.one;
-		} else if (this.CurrentHealth == 0) {
-			
-
+		//if (this.CurrentHealth == 3) {
+			//this.transform.localScale = Vector3.one;
+		//} else if (this.CurrentHealth == 0) {
 			StartCoroutine (ressurection ());
-		}
+		//}
 
 	}
 

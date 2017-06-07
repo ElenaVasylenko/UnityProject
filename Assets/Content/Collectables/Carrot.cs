@@ -6,9 +6,7 @@ public class Carrot : Collectable {
 
 	protected override void OnRabitHit(HeroRabbit rabit)
 	{
-		//rabit.reduceHealth (3);
-		//rabit.onHealthChange();
-		rabit.sizeNormalize (1);
+		rabit.reduceHealth (3);
 		this.CollectedHide ();
 	}
 

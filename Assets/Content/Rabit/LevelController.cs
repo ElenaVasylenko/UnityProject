@@ -1,10 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour {
-	
+
+
+	int coins = 0;
+	int fruits = 0;
+	int totalFruits = 10;
+	int null_nums = 4; //number of nulls in coins counter 0000
+	public UILabel coinsLabel;
+	public UILabel fruitsLabel;
+
+	public GameObject heart1;
+	public GameObject heart2;
+	public GameObject heart3;
+
+	public GameObject gem1; //blue
+	public GameObject gem2; //red
+	public GameObject gem3; //green
+
 	public static LevelController current;
+
 	void Awake() {
 		current = this;
 	}
@@ -17,19 +35,55 @@ public class LevelController : MonoBehaviour {
 	public void onRabitDeath(HeroRabbit rabit) {
 		//При смерті кролика повертаємо на початкову позицію
 		//restore health
-		rabit.CurrentHealth = 3;
-		rabit.transform.position = this.startingPosition;
+		Debug.Log("Health: " + rabit.CurrentHealth);
+		if(rabit.CurrentHealth == 2)
+			heart1.SetActive(false);
+
+		if(rabit.CurrentHealth == 1)
+			heart2.SetActive(false);
+
+		if (rabit.CurrentHealth == 0) {
+			heart3.SetActive (false);
+			SceneManager.LoadScene("LevelChoose");
+			//rabit.CurrentHealth = 3;
+			//rabit.transform.position = this.startingPosition;
+		}
 	}
 		
 	public void addCoins(int n){
+		coins += n;
+		string c = "" + coins;
+		string coins_counter = "";
+		int gaps = null_nums - c.Length;
+		Debug.Log (gaps);
+		for(int i= 0; i < gaps; i++){
+			coins_counter = coins_counter+"0";
+		}
+
+		coins_counter += "" + coins;
+		coinsLabel.text = coins_counter;
+
 		Debug.Log ("coins collected: " + n);
 	}
 
 	public void addFruits(int n){
+		fruits += n;
+		fruitsLabel.text = fruits + " / " + totalFruits;
+
 		Debug.Log ("fruits collected: " + n);
 	}
 
 	public void addCrystals(int n){
+		
+		if (n == 1)
+			gem1.SetActive (false);
+
+		if (n == 2)
+			gem2.SetActive (false);
+
+		if (n == 3)
+			gem3.SetActive (false);
+			
 		Debug.Log ("crystals collected: " + n);
 	}
 

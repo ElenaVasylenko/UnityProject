@@ -11,7 +11,9 @@ public class DeathHere : MonoBehaviour {
 		//Намагаємося отримати компонент кролика
 		HeroRabbit rabit = collider.GetComponent<HeroRabbit> ();
 		//Впасти міг не тільки кролик
+
 		if(rabit != null) {
+			rabit.reduceHealth(1);
 			//Повідомляємо рівень, про смерть кролика
 			LevelController.current.onRabitDeath (rabit);
 		}
