@@ -35,6 +35,8 @@ public class LevelController : MonoBehaviour {
 	public void onRabitDeath(HeroRabbit rabit) {
 		//При смерті кролика повертаємо на початкову позицію
 		//restore health
+		rabit.transform.position = this.startingPosition;
+
 		Debug.Log("Health: " + rabit.CurrentHealth);
 		if(rabit.CurrentHealth == 2)
 			heart1.SetActive(false);
@@ -46,7 +48,7 @@ public class LevelController : MonoBehaviour {
 			heart3.SetActive (false);
 			SceneManager.LoadScene("LevelChoose");
 			//rabit.CurrentHealth = 3;
-			//rabit.transform.position = this.startingPosition;
+
 		}
 	}
 		
