@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: f49d54331e90e1949b64a7f5353c0476
+timeCreated: 1497098178
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - sound: {instanceID: 0}
+  - music: {instanceID: 0}
+  - close: {instanceID: 0}
+  - background: {instanceID: 0}
+  - soundOnImg: {fileID: 21300000, guid: 9d51c550af7f042448b0d69bc8f39958, type: 3}
+  - soundOffImg: {fileID: 21300000, guid: a96b3c306d8f54d59992608610fa8420, type: 3}
+  - musicOnImg: {fileID: 21300000, guid: f0cf33b7ce34e41798c3899a84839cbd, type: 3}
+  - musicOffImg: {fileID: 21300000, guid: 05d63ac62d0544d53a2005d0ceb838ea, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

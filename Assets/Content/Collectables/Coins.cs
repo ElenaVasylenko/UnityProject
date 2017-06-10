@@ -6,6 +6,7 @@ public class Coins : Collectable {
 
 	protected override void OnRabitHit (HeroRabbit rabit)
 	{
+		rabit.coinTune ();
 		LevelController.current.addCoins (1);
 		this.CollectedHide ();
 	}

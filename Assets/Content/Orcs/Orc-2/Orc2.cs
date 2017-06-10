@@ -26,6 +26,9 @@ public class Orc2 : MonoBehaviour {
 	public BoxCollider2D headCollider;
 	public BoxCollider2D bodyCollider;
 
+	public AudioClip attackSound = null;
+	AudioSource attackSource = null;
+
 	bool isDead(){
 		return this.CurrentHealth == 0;
 	}
@@ -45,8 +48,15 @@ public class Orc2 : MonoBehaviour {
 	{
 		this.pointA = this.transform.position;
 		this.pointB = this.pointA + patrolDistance;
+
+		attackSource = gameObject.AddComponent<AudioSource> ();
+		attackSource.clip = attackSound;
 	}
 
+
+	public void attackTune() {
+		attackSource.Play ();
+	}
 
 	//HEALTH
 		public void reduceHealth(int n){
@@ -131,7 +141,7 @@ public class Orc2 : MonoBehaviour {
 
 		// RABBIT IS IN ORC AREA
 		if (isRabbitHere()) {
-
+			this.attackTune ();
 			animator.SetBool ("walk", false);
 			//animator.SetBool ("attack", true)
 			//animator.SetBool ("idle", true);

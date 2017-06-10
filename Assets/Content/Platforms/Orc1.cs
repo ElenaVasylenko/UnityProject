@@ -30,6 +30,10 @@ public class Orc1 : MonoBehaviour {
 	}
 
 
+	public AudioClip attackSound = null;
+	AudioSource attackSource = null;
+
+
 	/*float getDirection(){
 
 		Vector3 my_pos = this.transform.position;
@@ -65,8 +69,14 @@ public class Orc1 : MonoBehaviour {
 	{
 		this.pointA = this.transform.position;
 		this.pointB = this.pointA + patrolDistance;
+
+		attackSource = gameObject.AddComponent<AudioSource> ();
+		attackSource.clip = attackSound;
 	}
 
+	public void attackTune() {
+		attackSource.Play ();
+	}
 
 	public void reduceHealth(int n){
 		this.CurrentHealth -= n;
@@ -143,7 +153,7 @@ public class Orc1 : MonoBehaviour {
 	
 		// RABBIT IS IN ORC AREA
 		if (isRabbitHere()) {
-			
+			this.attackTune ();
 
 			if ((rabbit_pos.x - my_pos.x) < 0)
 				sr.flipX = false;

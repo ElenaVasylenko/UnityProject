@@ -5,13 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour {
 
-
 	int coins = 0;
 	int fruits = 0;
 	int totalFruits = 10;
-	int null_nums = 4; //number of nulls in coins counter 0000
+	int null_nums = 4;//number of nulls in coins counter 0000
+	int crystals_num = 0;
+
+	static int saved_coins = 0;
 	public UILabel coinsLabel;
 	public UILabel fruitsLabel;
+	public GameObject failPrefab;
 
 	public GameObject heart1;
 	public GameObject heart2;
@@ -27,6 +30,10 @@ public class LevelController : MonoBehaviour {
 		current = this;
 	}
 
+	void Start(){
+		addCoins (0); //to initialize label text with right number format
+		this.coins = saved_coins;
+	}
 	Vector3 startingPosition;
 	public void setStartPosition(Vector3 pos) {
 		this.startingPosition = pos;
@@ -46,23 +53,43 @@ public class LevelController : MonoBehaviour {
 
 		if (rabit.CurrentHealth == 0) {
 			heart3.SetActive (false);
-			SceneManager.LoadScene("LevelChoose");
+			Debug.Log("Failed!!!!!!!!!!");
+
+			StartCoroutine (failLevel());
+			//SceneManager.LoadScene("LevelChoose");
 			//rabit.CurrentHealth = 3;
 
 		}
 	}
+
+	public IEnumerator failLevel() {
+		yield return new WaitForSeconds (2f);
+		//Знайти батьківський елемент
+		GameObject parent = UICamera.first.transform.parent.gameObject;
+		//	GameObject parent = UICamera.first.transform.SetParent(gameObject);
+		//Створити Prefab
+		GameObject obj = NGUITools.AddChild (parent, failPrefab);
+		//Отримати доступ до компоненту (щоб передати параметри)
+		obj.GetComponent<FailPopUp>();
+	}
 		
 	public void addCoins(int n){
-		coins += n;
-		string c = "" + coins;
+		crystals_num += 1;
+
+		this.coins += n;
+		saved_coins += n;
+
+		string c = "" + saved_coins;
 		string coins_counter = "";
+
 		int gaps = null_nums - c.Length;
 		Debug.Log (gaps);
+
 		for(int i= 0; i < gaps; i++){
 			coins_counter = coins_counter+"0";
 		}
 
-		coins_counter += "" + coins;
+		coins_counter += "" + saved_coins;
 		coinsLabel.text = coins_counter;
 
 		Debug.Log ("coins collected: " + n);

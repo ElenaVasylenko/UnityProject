@@ -1,10 +1,18 @@
 fileFormatVersion: 2
 guid: 5f400d84192b5ce4683e9f2adc9f0a0f
-timeCreated: 1495022117
+timeCreated: 1497022833
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - runSound: {fileID: 8300000, guid: 0d024189a711c440997b2d9f341c8dd0, type: 3}
+  - groundSound: {fileID: 8300000, guid: 4678dc960a2b949329a55d696cf4ec68, type: 3}
+  - dieSound: {fileID: 8300000, guid: 7553580dee44e4f96b2efa5f4e5e17c3, type: 3}
+  - crystalSound: {fileID: 8300000, guid: 1efea67b8444d4802941941e49c70cc0, type: 3}
+  - coinSound: {fileID: 8300000, guid: d07c1afb94cf04c50a369bdf0faaf7cf, type: 3}
+  - mushroomSound: {fileID: 8300000, guid: 7e71b9428c0c54a65ad2831f0a140120, type: 3}
+  - fruitSound: {fileID: 8300000, guid: cd46aa2d6e78249dd8df3f3b948d168a, type: 3}
+  - bombSound: {fileID: 8300000, guid: 0a239337795f5456b959aee0868bd6d6, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

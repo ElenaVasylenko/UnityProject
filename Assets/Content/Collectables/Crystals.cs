@@ -24,7 +24,7 @@ public class Crystals : Collectable {
 
 	protected override void OnRabitHit (HeroRabbit rabit)
 	{
-		
+		rabit.crystalTune ();
 		SpriteRenderer sr = GetComponent<SpriteRenderer>();
 		Debug.Log ("HAAAAAAAAAMW: "+sr.name);
 		string gemName = sr.name;

@@ -18,19 +18,91 @@ public class HeroRabbit : MonoBehaviour {
 
 	//public bool rabbitIsBig = false;
 
-	// HEALTH
+	//	HEALTH
 	public static int MaxHealth = 3;
 	public int CurrentHealth = MaxHealth;
 	public static HeroRabbit lastRabbit = null;
+
+	//	SOUNDS
+	public AudioClip runSound = null;
+	public AudioClip groundSound = null;
+	public AudioClip dieSound = null;
+	public AudioClip crystalSound = null;
+	public AudioClip coinSound = null;
+	public AudioClip mushroomSound = null;
+	public AudioClip fruitSound = null;
+	public AudioClip bombSound = null;
+
+	AudioSource runSource = null;
+	AudioSource groundSource = null;
+	AudioSource dieSource = null;
+	AudioSource crystalSource = null;
+	AudioSource coinSource = null;
+	AudioSource mushroomSource = null;
+	AudioSource fruitSource = null;
+	AudioSource bombSource = null;
+
+
 
 	void Awake() {
 		lastRabbit = this;
 	}
 
 	void Start(){
+
+		runSource = gameObject.AddComponent<AudioSource> ();
+		runSource.clip = runSound;
+
+		groundSource = gameObject.AddComponent<AudioSource> ();
+		groundSource.clip = groundSound;
+
+		dieSource = gameObject.AddComponent<AudioSource> ();
+		dieSource.clip = dieSound;
+
+		crystalSource = gameObject.AddComponent<AudioSource> ();
+		crystalSource.clip = crystalSound;
+
+		coinSource = gameObject.AddComponent<AudioSource> ();
+		coinSource.clip = coinSound;
+
+		mushroomSource = gameObject.AddComponent<AudioSource> ();
+		mushroomSource.clip = mushroomSound;
+
+		fruitSource = gameObject.AddComponent<AudioSource> ();
+		fruitSource.clip = fruitSound;
+
+		bombSource = gameObject.AddComponent<AudioSource> ();
+		bombSource.clip = bombSound;
+
+
+
 		myBody = this.GetComponent<Rigidbody2D>();
 		this.heroParent = this.transform.parent;
 		LevelController.current.setStartPosition(transform.position);
+	}
+
+	public void coinTune() {
+		coinSource.Play ();
+	}
+
+	public void fruitTune() {
+		fruitSource.Play ();
+	}
+
+	public void crystalTune() {
+		crystalSource.Play ();
+	}
+
+	public void mushroomTune() {
+		mushroomSource.Play ();
+	}
+
+	public void bombTune() {
+		bombSource.Play ();
+	}
+
+	public void dieTune() {
+		dieSource.Play ();
 	}
 
 
@@ -94,8 +166,9 @@ public class HeroRabbit : MonoBehaviour {
 		
 		Animator animator = GetComponent<Animator> ();
 		animator.SetBool("die",true);
-
-		yield return new WaitForSeconds (4.0f);
+		this.dieTune ();
+		
+		yield return new WaitForSeconds (2.0f);
 		LevelController.current.onRabitDeath (this);
 		animator.SetBool("die",false);
 		animator.SetBool("run",true);
@@ -144,8 +217,10 @@ public class HeroRabbit : MonoBehaviour {
 
 		if(Mathf.Abs(value) > 0) {
 			animator.SetBool ("run", true);
+
 		} else {
 			animator.SetBool ("run", false);
+			runSource.Play ();
 		}
 
 
@@ -154,6 +229,7 @@ public class HeroRabbit : MonoBehaviour {
 			Vector2 vel = myBody.velocity;
 			vel.x = value * speed;
 			myBody.velocity = vel;
+			
 		}
 		SpriteRenderer sr = GetComponent<SpriteRenderer>();
 		if (value < 0)
@@ -214,13 +290,13 @@ public class HeroRabbit : MonoBehaviour {
 		}
 
 		//Animator animator = GetComponent<Animator>();
-		if (this.isGrounded)
-		{
+		if (this.isGrounded){
 			animator.SetBool("jump", false);
+			
 		}
-		else
-		{
+		else{
 			animator.SetBool("jump", true);
+			groundSource.Play ();
 		}
 
 

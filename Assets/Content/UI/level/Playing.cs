@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Playing : MonoBehaviour {
 
-	public MyButton playButton;
+	public StartButton playButton;
 
 	void Start () {
 		playButton.signalOnClick.AddListener (this.onPlay);

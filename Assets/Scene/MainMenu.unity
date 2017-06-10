@@ -423,10 +423,10 @@ GameObject:
   m_Component:
   - component: {fileID: 544202583}
   - component: {fileID: 544202588}
-  - component: {fileID: 544202587}
   - component: {fileID: 544202586}
   - component: {fileID: 544202585}
   - component: {fileID: 544202584}
+  - component: {fileID: 544202587}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -441,7 +441,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 544202582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: -80, z: 0}
+  m_LocalPosition: {x: 25, y: -93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 791192595}
@@ -498,7 +498,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 150, y: 134, z: 0}
+  m_Size: {x: 158, y: 157, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &544202587
 MonoBehaviour:
@@ -508,7 +508,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 544202582}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 384df5b37ee5e6946a14a2d4e347c3c7, type: 3}
+  m_Script: {fileID: 11500000, guid: a11f6562ee8652e4a916c64e8b9e3188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   signalOnClick:
@@ -530,30 +530,30 @@ MonoBehaviour:
   leftAnchor:
     target: {fileID: 791192595}
     relative: 0.5
-    absolute: -74
+    absolute: -54
   rightAnchor:
     target: {fileID: 791192595}
     relative: 0.5
-    absolute: 76
+    absolute: 104
   bottomAnchor:
     target: {fileID: 791192595}
     relative: 0
-    absolute: 146
+    absolute: 121
   topAnchor:
     target: {fileID: 791192595}
     relative: 0.5
-    absolute: -13
+    absolute: -15
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 150
-  mHeight: 134
+  mWidth: 158
+  mHeight: 157
   mDepth: 1
   mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 1.119403
+  aspectRatio: 1.0063695
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
@@ -2078,7 +2078,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1630595570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 187, z: 0}
+  m_LocalPosition: {x: 0, y: 173, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 791192595}
@@ -2097,31 +2097,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftAnchor:
     target: {fileID: 791192595}
-    relative: 0.5
-    absolute: -230
+    relative: 0
+    absolute: 221
   rightAnchor:
     target: {fileID: 791192595}
-    relative: 0.5
-    absolute: 232
+    relative: 0
+    absolute: 821
   bottomAnchor:
     target: {fileID: 791192595}
     relative: 0.5
-    absolute: 127
+    absolute: 82
   topAnchor:
     target: {fileID: 791192595}
     relative: 1
-    absolute: -48
+    absolute: -31
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 462
-  mHeight: 118
+  mWidth: 600
+  mHeight: 180
   mDepth: 0
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 3.9152544
+  aspectRatio: 3.3333333
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
@@ -2392,11 +2392,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4045149968144778, guid: e244c14a4866726438108b42f71762eb, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.23
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4045149968144778, guid: e244c14a4866726438108b42f71762eb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.02
+      value: -0.11
       objectReference: {fileID: 0}
     - target: {fileID: 4045149968144778, guid: e244c14a4866726438108b42f71762eb, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2434,11 +2434,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4045149968144778, guid: e244c14a4866726438108b42f71762eb, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.84937567
+      value: 1.0619642
       objectReference: {fileID: 0}
     - target: {fileID: 4045149968144778, guid: e244c14a4866726438108b42f71762eb, type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.9824227
+      value: 1.2020974
       objectReference: {fileID: 0}
     - target: {fileID: 114463757021374574, guid: e244c14a4866726438108b42f71762eb,
         type: 2}
