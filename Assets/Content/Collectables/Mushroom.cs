@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Mushroom : Collectable {
 
+
 	protected override void OnRabitHit (HeroRabbit rabit)
 	{
-		rabit.mushroomTune ();	
+		rabit.mushroomTune ();
 		//rabit.reduceHealth (1);
 		rabit.transform.localScale = Vector3.one * 2;
 		LevelController.current.oopsMushroom(1);

@@ -23,6 +23,8 @@ public class HeroRabbit : MonoBehaviour {
 	public int CurrentHealth = MaxHealth;
 	public static HeroRabbit lastRabbit = null;
 
+	AudioController ac;
+
 	//	SOUNDS
 	public AudioClip runSound = null;
 	public AudioClip groundSound = null;
@@ -42,13 +44,16 @@ public class HeroRabbit : MonoBehaviour {
 	AudioSource fruitSource = null;
 	AudioSource bombSource = null;
 
-
-
 	void Awake() {
 		lastRabbit = this;
 	}
 
 	void Start(){
+
+		ac = GetComponent<AudioController> ();
+		myBody = this.GetComponent<Rigidbody2D>();
+		this.heroParent = this.transform.parent;
+		LevelController.current.setStartPosition(transform.position);
 
 		runSource = gameObject.AddComponent<AudioSource> ();
 		runSource.clip = runSound;
@@ -73,12 +78,14 @@ public class HeroRabbit : MonoBehaviour {
 
 		bombSource = gameObject.AddComponent<AudioSource> ();
 		bombSource.clip = bombSound;
+	}
 
+	public void runTune() {
+		runSource.Play ();
+	}
 
-
-		myBody = this.GetComponent<Rigidbody2D>();
-		this.heroParent = this.transform.parent;
-		LevelController.current.setStartPosition(transform.position);
+	public void groundTune() {
+		groundSource.Play ();
 	}
 
 	public void coinTune() {
@@ -103,6 +110,16 @@ public class HeroRabbit : MonoBehaviour {
 
 	public void dieTune() {
 		dieSource.Play ();
+	}
+
+	public void muteSounds(){
+		dieSource.Stop ();
+		mushroomSource.Stop ();
+		bombSource.Stop ();
+		crystalSource.Stop ();
+		fruitSource.Stop ();
+		runSource.Stop ();
+		groundSource.Stop ();
 	}
 
 
@@ -220,7 +237,7 @@ public class HeroRabbit : MonoBehaviour {
 
 		} else {
 			animator.SetBool ("run", false);
-			runSource.Play ();
+			this.runTune ();
 		}
 
 
@@ -296,7 +313,7 @@ public class HeroRabbit : MonoBehaviour {
 		}
 		else{
 			animator.SetBool("jump", true);
-			groundSource.Play ();
+			this.groundTune ();
 		}
 
 

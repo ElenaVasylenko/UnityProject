@@ -10,6 +10,7 @@ public class Crystals : Collectable {
 	string gemName3 = "gem (1)"; //green
 	string gemName1 = "gem (2)"; //blue
 
+
 	public void detectColor(string gemName){
 		if (gemName == gemName1)
 			color = 1;

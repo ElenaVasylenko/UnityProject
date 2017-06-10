@@ -9,9 +9,16 @@ public class LevelController : MonoBehaviour {
 	int fruits = 0;
 	int totalFruits = 10;
 	int null_nums = 4;//number of nulls in coins counter 0000
-	int crystals_num = 0;
+
+	public int crystals_num = 0;
+	public bool blue_gem = false;
+	public bool red_gem = false;
+	public bool green_gem = false;
 
 	static int saved_coins = 0;
+	public static bool sound_on = true;
+	public static bool music_on = true;
+
 	public UILabel coinsLabel;
 	public UILabel fruitsLabel;
 	public GameObject failPrefab;
@@ -62,6 +69,14 @@ public class LevelController : MonoBehaviour {
 		}
 	}
 
+	public string getCoinsLabel(){
+		return coinsLabel.text;
+	} 
+
+	public string getFruitsLabel(){
+		return fruitsLabel.text;
+	} 
+
 	public IEnumerator failLevel() {
 		yield return new WaitForSeconds (2f);
 		//Знайти батьківський елемент
@@ -104,15 +119,22 @@ public class LevelController : MonoBehaviour {
 
 	public void addCrystals(int n){
 		
-		if (n == 1)
+		if (n == 1) {
 			gem1.SetActive (false);
+			blue_gem = true;
+		}
 
-		if (n == 2)
+		if (n == 2) {
 			gem2.SetActive (false);
+			red_gem = true;
+		}
 
-		if (n == 3)
+		if (n == 3) {
 			gem3.SetActive (false);
-			
+			green_gem = true;
+		}
+
+		crystals_num++;
 		Debug.Log ("crystals collected: " + n);
 	}
 

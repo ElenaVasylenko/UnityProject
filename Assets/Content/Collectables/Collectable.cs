@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 public class Collectable : MonoBehaviour {
-	
+
 	protected virtual void OnRabitHit(HeroRabbit rabit) {
 		
 	}
