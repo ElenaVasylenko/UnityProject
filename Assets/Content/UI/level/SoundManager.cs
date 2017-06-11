@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SoundManager {
 	
-	bool is_sound_on = true;
+	public bool is_sound_on = true;
 
 	public bool isSoundOn() {
 		return this.is_sound_on;

@@ -17,12 +17,14 @@ public class WinPopUp : MonoBehaviour {
 	public GameObject gem2; //blue
 	public GameObject gem3; //green
 
+	private LevelStat stats = null;
 
+	public int totalCoins = 0;
 	//public UnityEvent signalOnClick = new UnityEvent();
 
 	// Use this for initialization
 	void Start () {
-		Time.timeScale = 0; //stop this world
+		//Time.timeScale = 0; //stop this world
 		Debug.Log ("close!!!!!!!!!!!!");
 		close.signalOnClick.AddListener (this.closePanel);
 		background.signalOnClick.AddListener(this.closePanel);
@@ -32,11 +34,43 @@ public class WinPopUp : MonoBehaviour {
 		coinsLabel.text = LevelController.current.getCoinsLabel();
 		fruitsLabel.text = LevelController.current.getFruitsLabel();
 		showCrystals ();
+		saveLevelStat ();
 	}
 
 	// Update is called once per frame
 	void Update () {
 	}
+
+
+	void saveLevelStat(){
+		Debug.Log ("Save Stats");
+		PlayerPrefs.SetInt("coins", 0);
+		totalCoins = LevelController.current.coins;
+		Debug.Log (totalCoins + " :coins saved");
+		PlayerPrefs.SetInt("coins", totalCoins);
+		PlayerPrefs.Save ();
+
+		string str = PlayerPrefs.GetString("Level2", null); //temp
+		this.stats = JsonUtility.FromJson<LevelStat>(str);
+
+
+		if (this.stats==null){
+			this.stats = new LevelStat();
+		}
+
+		stats.levelPassed = true;
+
+		if (LevelController.current.crystals_num == 3)
+			stats.hasCrystals = true;
+
+		if (LevelController.current.fruits == LevelController.current.totalFruits)
+			stats.hasAllFruits = true;
+
+		str = JsonUtility.ToJson (this.stats);
+		PlayerPrefs.SetString ("Level2", str);
+		
+	}
+
 
 	void showCrystals(){
 			

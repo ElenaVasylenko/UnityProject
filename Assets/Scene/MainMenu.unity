@@ -242,7 +242,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 286471250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 446, y: -224, z: 0}
+  m_LocalPosition: {x: 481, y: -244, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 791192595}
@@ -362,7 +362,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  settingsPrefab: {fileID: 1601912060151368, guid: 60af4ab1ff6541a4184a2c8612e7cee7,
+  settingsPrefab: {fileID: 1529162938418894, guid: bcdb6698d447b5044a90db85ea10ef4a,
     type: 2}
 --- !u!1 &350944168
 GameObject:
@@ -460,7 +460,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 544202582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25, y: -93, z: 0}
+  m_LocalPosition: {x: 25, y: -103, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 791192595}
@@ -517,7 +517,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 158, y: 157, z: 0}
+  m_Size: {x: 158, y: 177, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &544202587
 MonoBehaviour:
@@ -566,13 +566,13 @@ MonoBehaviour:
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mWidth: 158
-  mHeight: 157
+  mHeight: 177
   mDepth: 1
   mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 1.0063695
+  aspectRatio: 0.75238097
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
@@ -845,7 +845,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 614410727}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.52, y: 2.84, z: -1}
+  m_LocalPosition: {x: 4.57, y: 2.95, z: -1}
   m_LocalScale: {x: 2.4470394, y: 2.4756753, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -984,6 +984,7 @@ GameObject:
   - component: {fileID: 754861913}
   - component: {fileID: 754861912}
   - component: {fileID: 754861911}
+  - component: {fileID: 754861916}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1061,6 +1062,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &754861916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 754861910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0059464f0234e474d94fa90a2ac30caa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music: {fileID: 8300000, guid: 57a5b2120c2d04fa9bcb5b2e99ee9361, type: 3}
 --- !u!1 &755117485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1240,7 +1253,7 @@ Transform:
   m_GameObject: {fileID: 791192591}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 0.0043572984, y: 0.0043572984, z: 0.0043572984}
+  m_LocalScale: {x: 0.0040816325, y: 0.0040816325, z: 0.0040816325}
   m_Children:
   - {fileID: 48196260}
   - {fileID: 1630595571}
@@ -1761,7 +1774,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1264575375}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.9, y: 2.28, z: -1}
+  m_LocalPosition: {x: 7.08, y: 2.21, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2097,7 +2110,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1630595570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 173, z: 0}
+  m_LocalPosition: {x: 72, y: 194, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 791192595}
@@ -2117,30 +2130,30 @@ MonoBehaviour:
   leftAnchor:
     target: {fileID: 791192595}
     relative: 0
-    absolute: 221
+    absolute: 251
   rightAnchor:
     target: {fileID: 791192595}
     relative: 0
-    absolute: 821
+    absolute: 1007
   bottomAnchor:
     target: {fileID: 791192595}
     relative: 0.5
-    absolute: 82
+    absolute: 99
   topAnchor:
     target: {fileID: 791192595}
     relative: 1
-    absolute: -31
+    absolute: -23
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 600
-  mHeight: 180
+  mWidth: 756
+  mHeight: 191
   mDepth: 0
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 3.3333333
+  aspectRatio: 3.375
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
@@ -2474,6 +2487,46 @@ Prefab:
       propertyPath: JumpSpeed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114463757021374574, guid: e244c14a4866726438108b42f71762eb,
+        type: 2}
+      propertyPath: runSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d024189a711c440997b2d9f341c8dd0, type: 3}
+    - target: {fileID: 114463757021374574, guid: e244c14a4866726438108b42f71762eb,
+        type: 2}
+      propertyPath: groundSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0a7169e0dced249e7b04ff774fc0bd87, type: 3}
+    - target: {fileID: 114463757021374574, guid: e244c14a4866726438108b42f71762eb,
+        type: 2}
+      propertyPath: dieSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7553580dee44e4f96b2efa5f4e5e17c3, type: 3}
+    - target: {fileID: 114463757021374574, guid: e244c14a4866726438108b42f71762eb,
+        type: 2}
+      propertyPath: crystalSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1efea67b8444d4802941941e49c70cc0, type: 3}
+    - target: {fileID: 114463757021374574, guid: e244c14a4866726438108b42f71762eb,
+        type: 2}
+      propertyPath: coinSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d07c1afb94cf04c50a369bdf0faaf7cf, type: 3}
+    - target: {fileID: 114463757021374574, guid: e244c14a4866726438108b42f71762eb,
+        type: 2}
+      propertyPath: mushroomSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7c5075a6db7574bbcaafcd3b42e2fab5, type: 3}
+    - target: {fileID: 114463757021374574, guid: e244c14a4866726438108b42f71762eb,
+        type: 2}
+      propertyPath: fruitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: cd46aa2d6e78249dd8df3f3b948d168a, type: 3}
+    - target: {fileID: 114463757021374574, guid: e244c14a4866726438108b42f71762eb,
+        type: 2}
+      propertyPath: bombSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0a239337795f5456b959aee0868bd6d6, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e244c14a4866726438108b42f71762eb, type: 2}
   m_IsPrefabParent: 0

@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour {
+	
+	private LevelStat stats = null;
 
-	int coins = 0;
-	int fruits = 0;
-	int totalFruits = 10;
+	public int coins = 0;
+	public int fruits = 0;
+	public int totalFruits = 10;
 	int null_nums = 4;//number of nulls in coins counter 0000
 
 	public int crystals_num = 0;
@@ -16,8 +18,8 @@ public class LevelController : MonoBehaviour {
 	public bool green_gem = false;
 
 	static int saved_coins = 0;
-	public static bool sound_on = true;
-	public static bool music_on = true;
+	public bool sound_on = true;
+	public bool music_on = true;
 
 	public UILabel coinsLabel;
 	public UILabel fruitsLabel;
@@ -38,14 +40,18 @@ public class LevelController : MonoBehaviour {
 	}
 
 	void Start(){
+		//saved_coins = PlayerPrefs.GetInt("coins", 0);
 		addCoins (0); //to initialize label text with right number format
 		this.coins = saved_coins;
 	}
+
 	Vector3 startingPosition;
+
 	public void setStartPosition(Vector3 pos) {
 		this.startingPosition = pos;
 
 	}
+
 	public void onRabitDeath(HeroRabbit rabit) {
 		//При смерті кролика повертаємо на початкову позицію
 		//restore health

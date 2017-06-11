@@ -78,37 +78,46 @@ public class HeroRabbit : MonoBehaviour {
 
 		bombSource = gameObject.AddComponent<AudioSource> ();
 		bombSource.clip = bombSound;
-	}
 
+	}
+		
 	public void runTune() {
+		if(LevelController.current.sound_on)
 		runSource.Play ();
 	}
 
 	public void groundTune() {
+		if(LevelController.current.sound_on)
 		groundSource.Play ();
 	}
 
 	public void coinTune() {
+		if(LevelController.current.sound_on)
 		coinSource.Play ();
 	}
 
 	public void fruitTune() {
+		if(LevelController.current.sound_on)
 		fruitSource.Play ();
 	}
 
 	public void crystalTune() {
+		if(LevelController.current.sound_on)
 		crystalSource.Play ();
 	}
 
 	public void mushroomTune() {
+		if(LevelController.current.sound_on)
 		mushroomSource.Play ();
 	}
 
 	public void bombTune() {
+		if(LevelController.current.sound_on)
 		bombSource.Play ();
 	}
 
 	public void dieTune() {
+		if(LevelController.current.sound_on)
 		dieSource.Play ();
 	}
 
@@ -154,31 +163,6 @@ public class HeroRabbit : MonoBehaviour {
 		return this.transform.localScale == Vector3.one * 2;
 	}
 
-	/*public void sizeNormalize(int n){
-		if (this.transform.localScale == Vector3.one * 2) {
-			this.transform.localScale = Vector3.one;*/
-
-			//TODO BONUS
-			/*SpriteRenderer sr = this.GetComponent<SpriteRenderer>();
-			var red_color = sr.color;
-			           
-			           red_color.r = 255;
-			           red_color.g = 0;
-					   red_color.b = 0;
-		               sr.color = red_color;*/
-
-		/*}else {
-			reduceHealth(n);
-			//this.CurrentHealth = 0;
-			Debug.Log ("Rabbit is death");
-			//this.onHealthChange ();
-			//LevelController.current.onRabitDeath (this);
-		}
-
-		this.onHealthChange ();
-
-	}*/
-
 	IEnumerator ressurection(){
 		
 		Animator animator = GetComponent<Animator> ();
@@ -193,12 +177,8 @@ public class HeroRabbit : MonoBehaviour {
 	}
 
 	public void onHealthChange(){
-
-		//if (this.CurrentHealth == 3) {
-			//this.transform.localScale = Vector3.one;
-		//} else if (this.CurrentHealth == 0) {
-			StartCoroutine (ressurection ());
-		//}
+	
+		StartCoroutine (ressurection ());
 
 	}
 
@@ -237,6 +217,8 @@ public class HeroRabbit : MonoBehaviour {
 
 		} else {
 			animator.SetBool ("run", false);
+
+			if(LevelController.current.sound_on)
 			this.runTune ();
 		}
 
@@ -313,6 +295,7 @@ public class HeroRabbit : MonoBehaviour {
 		}
 		else{
 			animator.SetBool("jump", true);
+
 			this.groundTune ();
 		}
 

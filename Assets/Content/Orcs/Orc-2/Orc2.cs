@@ -55,6 +55,7 @@ public class Orc2 : MonoBehaviour {
 
 
 	public void attackTune() {
+		if(LevelController.current.sound_on)
 		attackSource.Play ();
 	}
 
