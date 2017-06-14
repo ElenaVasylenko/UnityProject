@@ -18,8 +18,8 @@ public class LevelController : MonoBehaviour {
 	public bool green_gem = false;
 
 	static int saved_coins = 0;
-	public bool sound_on = true;
-	public bool music_on = true;
+	public bool sound_on ;
+	public bool music_on ;
 
 	public UILabel coinsLabel;
 	public UILabel fruitsLabel;
@@ -33,6 +33,8 @@ public class LevelController : MonoBehaviour {
 	public GameObject gem2; //red
 	public GameObject gem3; //green
 
+	int health = 3;
+
 	public static LevelController current;
 
 	void Awake() {
@@ -40,6 +42,8 @@ public class LevelController : MonoBehaviour {
 	}
 
 	void Start(){
+		sound_on = true;
+		music_on = true;
 		//saved_coins = PlayerPrefs.GetInt("coins", 0);
 		addCoins (0); //to initialize label text with right number format
 		this.coins = saved_coins;
@@ -56,6 +60,7 @@ public class LevelController : MonoBehaviour {
 		//При смерті кролика повертаємо на початкову позицію
 		//restore health
 		rabit.transform.position = this.startingPosition;
+		health--;
 
 		Debug.Log("Health: " + rabit.CurrentHealth);
 		if(rabit.CurrentHealth == 2)
@@ -65,10 +70,12 @@ public class LevelController : MonoBehaviour {
 			heart2.SetActive(false);
 
 		if (rabit.CurrentHealth == 0) {
+			heart1.SetActive(false);
+			heart2.SetActive(false);
 			heart3.SetActive (false);
 			Debug.Log("Failed!!!!!!!!!!");
 
-			StartCoroutine (failLevel());
+			StartCoroutine (failLevel(rabit));
 			//SceneManager.LoadScene("LevelChoose");
 			//rabit.CurrentHealth = 3;
 
@@ -83,8 +90,9 @@ public class LevelController : MonoBehaviour {
 		return fruitsLabel.text;
 	} 
 
-	public IEnumerator failLevel() {
-		yield return new WaitForSeconds (2f);
+	public IEnumerator failLevel(HeroRabbit rabbit) {
+		rabbit.failTune ();
+		yield return new WaitForSeconds (1f);
 		//Знайти батьківський елемент
 		GameObject parent = UICamera.first.transform.parent.gameObject;
 		//	GameObject parent = UICamera.first.transform.SetParent(gameObject);
@@ -121,6 +129,19 @@ public class LevelController : MonoBehaviour {
 		fruitsLabel.text = fruits + " / " + totalFruits;
 
 		Debug.Log ("fruits collected: " + n);
+	}
+
+	//LIFES 7 HW
+	public void addLifes(HeroRabbit rabbit){
+		
+		if (rabbit.CurrentHealth < 3) {
+			rabbit.CurrentHealth++;
+			if (!heart1.activeInHierarchy)
+				heart1.SetActive (true);
+			else {
+				heart2.SetActive (true);
+				}
+		}
 	}
 
 	public void addCrystals(int n){

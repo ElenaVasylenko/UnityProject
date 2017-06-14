@@ -10,17 +10,19 @@ public class ExitDoor : MonoBehaviour {
 		Debug.Log("Exit door!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		HeroRabbit rabit = collider.GetComponent<HeroRabbit>();
 		if(rabit != null) {
-			winWindow ();
+			winWindow (rabit);
 			//this.OnRabitHit (rabit); ........
 		}
 	}
 
-	void winWindow() {
+	void winWindow(HeroRabbit rabbit) {
+		
 		GameObject parent = UICamera.first.transform.parent.gameObject;
 		//Створити Prefab
 		GameObject obj = NGUITools.AddChild (parent, winPrefab);
 		//Отримати доступ до компоненту (щоб передати параметри)
 		WinPopUp popup = obj.GetComponent<WinPopUp>(); //???
+		rabbit.winTune();
 		//...
 	}
 }

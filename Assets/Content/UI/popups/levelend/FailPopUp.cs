@@ -9,12 +9,16 @@ public class FailPopUp : MonoBehaviour {
 	public MyButton repeat;
 	public MyButton close;
 	public MyButton background;
+	Scene current;
+	string scene_name;
 	//Scene current = SceneManager.GetActiveScene;
 	//public UnityEvent signalOnClick = new UnityEvent();
 
 	// Use this for initialization
 	void Start () {
 		//Time.timeScale = 0; //stop this world
+		//scene_name = current.name;
+		current = SceneManager.GetActiveScene();
 		Debug.Log ("close!!!!!!!!!!!!");
 		close.signalOnClick.AddListener (this.closePanel);
 		background.signalOnClick.AddListener(this.closePanel);
@@ -41,7 +45,7 @@ public class FailPopUp : MonoBehaviour {
 
 	void repeatLevel() {
 		Debug.Log ("repeat!!!!");
-		SceneManager.LoadScene ("Level2");
+		SceneManager.LoadScene (current.name);
 		//LevelController.setSound (false);
 	}
 }

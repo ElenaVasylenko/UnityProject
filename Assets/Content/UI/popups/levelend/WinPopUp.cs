@@ -19,12 +19,17 @@ public class WinPopUp : MonoBehaviour {
 
 	private LevelStat stats = null;
 
+	Scene scene;
+	//string scene_name;
+
 	public int totalCoins = 0;
 	//public UnityEvent signalOnClick = new UnityEvent();
 
 	// Use this for initialization
 	void Start () {
 		//Time.timeScale = 0; //stop this world
+		//scene_name = scene.name;
+		scene = SceneManager.GetActiveScene();
 		Debug.Log ("close!!!!!!!!!!!!");
 		close.signalOnClick.AddListener (this.closePanel);
 		background.signalOnClick.AddListener(this.closePanel);
@@ -50,7 +55,7 @@ public class WinPopUp : MonoBehaviour {
 		PlayerPrefs.SetInt("coins", totalCoins);
 		PlayerPrefs.Save ();
 
-		string str = PlayerPrefs.GetString("Level2", null); //temp
+		string str = PlayerPrefs.GetString(scene.name, null); //temp
 		this.stats = JsonUtility.FromJson<LevelStat>(str);
 
 
@@ -67,7 +72,7 @@ public class WinPopUp : MonoBehaviour {
 			stats.hasAllFruits = true;
 
 		str = JsonUtility.ToJson (this.stats);
-		PlayerPrefs.SetString ("Level2", str);
+		PlayerPrefs.SetString (scene.name, str);
 		
 	}
 
@@ -93,7 +98,7 @@ public class WinPopUp : MonoBehaviour {
 	}
 
 	void repeatLevel() {
-		SceneManager.LoadScene ("Level2");
+		SceneManager.LoadScene (scene.name);
 		//LevelController.setSound (false);
 	}
 }

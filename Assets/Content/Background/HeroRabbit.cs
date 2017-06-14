@@ -34,6 +34,8 @@ public class HeroRabbit : MonoBehaviour {
 	public AudioClip mushroomSound = null;
 	public AudioClip fruitSound = null;
 	public AudioClip bombSound = null;
+	public AudioClip winSound = null;
+	public AudioClip failSound = null;
 
 	AudioSource runSource = null;
 	AudioSource groundSource = null;
@@ -43,6 +45,8 @@ public class HeroRabbit : MonoBehaviour {
 	AudioSource mushroomSource = null;
 	AudioSource fruitSource = null;
 	AudioSource bombSource = null;
+	AudioSource winSource = null;
+	AudioSource failSource = null;
 
 	void Awake() {
 		lastRabbit = this;
@@ -79,6 +83,12 @@ public class HeroRabbit : MonoBehaviour {
 		bombSource = gameObject.AddComponent<AudioSource> ();
 		bombSource.clip = bombSound;
 
+		failSource = gameObject.AddComponent<AudioSource> ();
+		failSource.clip = failSound;
+
+		winSource = gameObject.AddComponent<AudioSource> ();
+		winSource.clip = winSound;
+
 	}
 		
 	public void runTune() {
@@ -89,6 +99,16 @@ public class HeroRabbit : MonoBehaviour {
 	public void groundTune() {
 		if(LevelController.current.sound_on)
 		groundSource.Play ();
+	}
+
+	public void failTune() {
+		if(LevelController.current.sound_on)
+			failSource.Play ();
+	}
+
+	public void winTune() {
+		if(LevelController.current.sound_on)
+			winSource.Play ();
 	}
 
 	public void coinTune() {
