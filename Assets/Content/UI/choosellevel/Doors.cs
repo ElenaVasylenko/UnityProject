@@ -8,9 +8,19 @@ public class Doors : MonoBehaviour {
 
 	public string SceneName;
 
+
 	void OnTriggerEnter2D(Collider2D other){
-		       SceneManager.LoadScene(SceneName);
+		if (SceneName.Equals( "Level2")) {
+			Debug.Log ("Scene lev 2!!!!!!!!!!!! ,lev 1: "+PlayerPrefs.GetInt ("Level1"));
+			if (PlayerPrefs.GetInt ("Level1") == 1) {
+				SceneManager.LoadScene (SceneName);
+
+			}
+		} else {
+			Debug.Log ("Scene lev 1!!!!!!!!!!!!");
+			SceneManager.LoadScene (SceneName);
 		}
+	}
 
 	/*// Use this for initialization
 	void Start () {

@@ -10,7 +10,7 @@ public class LevelController : MonoBehaviour {
 	public int coins = 0;
 	public int fruits = 0;
 	public int totalFruits = 10;
-	int null_nums = 4;//number of nulls in coins counter 0000
+	int null_nums = 4; //current of nulls currents counter 0000
 
 	public int crystals_num = 0;
 	public bool blue_gem = false;
@@ -18,11 +18,16 @@ public class LevelController : MonoBehaviour {
 	public bool green_gem = false;
 
 	static int saved_coins = 0;
+	static int allcurrent;
 	public bool sound_on ;
 	public bool music_on ;
 
+	public bool hasCrystals;
+	public bool hasAllFruits;
+	public static int levelPassed = 0;
+
 	public UILabel coinsLabel;
-	public UILabel fruitsLabel;
+	public  UILabel fruitsLabel;
 	public GameObject failPrefab;
 
 	public GameObject heart1;
@@ -33,6 +38,9 @@ public class LevelController : MonoBehaviour {
 	public GameObject gem2; //red
 	public GameObject gem3; //green
 
+	Scene scene;
+	string scene_name ;
+
 	int health = 3;
 
 	public static LevelController current;
@@ -42,9 +50,15 @@ public class LevelController : MonoBehaviour {
 	}
 
 	void Start(){
+		scene = SceneManager.GetActiveScene ();
+		scene_name = scene.name;
 		sound_on = true;
 		music_on = true;
-		//saved_coins = PlayerPrefs.GetInt("coins", 0);
+		saved_coins = PlayerPrefs.GetInt("coins", 0);
+		//PlayerPrefs.SetInt("Level1",0); // Обнуляємо попередню історію про пройденість рівня
+		PlayerPrefs.GetInt(scene_name,0);
+		//levelPassed = PlayerPrefs.GetInt(scene_name,0);
+		Debug.Log ("LEVEL PASSED??????? "+levelPassed);
 		addCoins (0); //to initialize label text with right number format
 		this.coins = saved_coins;
 	}
@@ -57,7 +71,7 @@ public class LevelController : MonoBehaviour {
 	}
 
 	public void onRabitDeath(HeroRabbit rabit) {
-		//При смерті кролика повертаємо на початкову позицію
+		//При currentкролика повертаємо на початкову позицію
 		//restore health
 		rabit.transform.position = this.startingPosition;
 		health--;
@@ -81,13 +95,24 @@ public class LevelController : MonoBehaviour {
 
 		}
 	}
-
 	public string getCoinsLabel(){
 		return coinsLabel.text;
 	} 
 
 	public string getFruitsLabel(){
 		return fruitsLabel.text;
+	} 
+
+	public void saveLevelPassed(){
+		if (scene_name.Equals ("Level1")) {
+			Debug.Log ("save scene 1!!!!!!!!!!!");
+			PlayerPrefs.SetInt ("Level1", 1);
+		}
+		if (scene_name.Equals ("Level2")) {
+			Debug.Log ("save scene 2!!!!!!!!!!!");
+			PlayerPrefs.SetInt ("Level2", 1);
+		}
+		PlayerPrefs.Save ();
 	} 
 
 	public IEnumerator failLevel(HeroRabbit rabbit) {
@@ -120,7 +145,8 @@ public class LevelController : MonoBehaviour {
 
 		coins_counter += "" + saved_coins;
 		coinsLabel.text = coins_counter;
-
+		PlayerPrefs.SetInt ("coins", saved_coins);
+		PlayerPrefs.Save ();
 		Debug.Log ("coins collected: " + n);
 	}
 

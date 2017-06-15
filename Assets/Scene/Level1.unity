@@ -1454,7 +1454,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 502983433}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.3, y: 0.29, z: 11}
+  m_LocalPosition: {x: 28.9, y: 0.29, z: 11}
   m_LocalScale: {x: 12.50681, y: 2.1281383, z: 1}
   m_Children: []
   m_Father: {fileID: 1431519525}
@@ -2673,11 +2673,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4970346837015262, guid: dd1f79a51fbb081449c925b8bd4d4c7d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 59.802757
+      value: 58.8
       objectReference: {fileID: 0}
     - target: {fileID: 4970346837015262, guid: dd1f79a51fbb081449c925b8bd4d4c7d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.3191886
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 4970346837015262, guid: dd1f79a51fbb081449c925b8bd4d4c7d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2828,6 +2828,8 @@ MonoBehaviour:
   green_gem: 0
   sound_on: 1
   music_on: 1
+  hasCrystals: 0
+  hasAllFruits: 0
   coinsLabel: {fileID: 797684161}
   fruitsLabel: {fileID: 720151394}
   failPrefab: {fileID: 1009246075481322, guid: 93f51f98981552647921937cd6d51988, type: 2}

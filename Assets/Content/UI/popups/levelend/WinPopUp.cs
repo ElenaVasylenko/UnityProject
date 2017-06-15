@@ -20,7 +20,7 @@ public class WinPopUp : MonoBehaviour {
 	private LevelStat stats = null;
 
 	Scene scene;
-	//string scene_name;
+	string scene_name;
 
 	public int totalCoins = 0;
 	//public UnityEvent signalOnClick = new UnityEvent();
@@ -28,8 +28,9 @@ public class WinPopUp : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//Time.timeScale = 0; //stop this world
-		//scene_name = scene.name;
+		//
 		scene = SceneManager.GetActiveScene();
+		scene_name = scene.name;
 		Debug.Log ("close!!!!!!!!!!!!");
 		close.signalOnClick.AddListener (this.closePanel);
 		background.signalOnClick.AddListener(this.closePanel);
@@ -39,6 +40,7 @@ public class WinPopUp : MonoBehaviour {
 		coinsLabel.text = LevelController.current.getCoinsLabel();
 		fruitsLabel.text = LevelController.current.getFruitsLabel();
 		showCrystals ();
+		LevelController.current.saveLevelPassed();
 		saveLevelStat ();
 	}
 
@@ -50,29 +52,19 @@ public class WinPopUp : MonoBehaviour {
 	void saveLevelStat(){
 		Debug.Log ("Save Stats");
 		PlayerPrefs.SetInt("coins", 0);
+
 		totalCoins = LevelController.current.coins;
+
 		Debug.Log (totalCoins + " :coins saved");
 		PlayerPrefs.SetInt("coins", totalCoins);
 		PlayerPrefs.Save ();
 
-		string str = PlayerPrefs.GetString(scene.name, null); //temp
-		this.stats = JsonUtility.FromJson<LevelStat>(str);
-
-
-		if (this.stats==null){
-			this.stats = new LevelStat();
-		}
-
-		stats.levelPassed = true;
-
+		//Temp
 		if (LevelController.current.crystals_num == 3)
 			stats.hasCrystals = true;
 
 		if (LevelController.current.fruits == LevelController.current.totalFruits)
 			stats.hasAllFruits = true;
-
-		str = JsonUtility.ToJson (this.stats);
-		PlayerPrefs.SetString (scene.name, str);
 		
 	}
 
