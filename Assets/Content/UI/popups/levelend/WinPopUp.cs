@@ -41,6 +41,7 @@ public class WinPopUp : MonoBehaviour {
 		fruitsLabel.text = LevelController.current.getFruitsLabel();
 		showCrystals ();
 		LevelController.current.saveLevelPassed();
+		LevelController.current.saveGems();
 		saveLevelStat ();
 	}
 
@@ -60,9 +61,10 @@ public class WinPopUp : MonoBehaviour {
 		PlayerPrefs.Save ();
 
 		//Temp
-		if (LevelController.current.crystals_num == 3)
+		if (LevelController.current.crystals_num == 3) {
+			
 			stats.hasCrystals = true;
-
+		}
 		if (LevelController.current.fruits == LevelController.current.totalFruits)
 			stats.hasAllFruits = true;
 		

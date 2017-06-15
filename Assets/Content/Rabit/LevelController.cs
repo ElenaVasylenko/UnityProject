@@ -26,8 +26,11 @@ public class LevelController : MonoBehaviour {
 	public bool hasAllFruits;
 	public static int levelPassed = 0;
 
+	public static int gemsLev1 = 0;
+	public static int gemsLev2 = 0;
+
 	public UILabel coinsLabel;
-	public  UILabel fruitsLabel;
+	public UILabel fruitsLabel;
 	public GameObject failPrefab;
 
 	public GameObject heart1;
@@ -57,8 +60,12 @@ public class LevelController : MonoBehaviour {
 		saved_coins = PlayerPrefs.GetInt("coins", 0);
 		//PlayerPrefs.SetInt("Level1",0); // Обнуляємо попередню історію про пройденість рівня
 		PlayerPrefs.GetInt(scene_name,0);
+		PlayerPrefs.GetInt("gem1");
+		PlayerPrefs.GetInt("gem2");
+		Debug.Log ("GEEEEEEEEEEEEEEEM1!!!!!! "+PlayerPrefs.GetInt ("gem1"));
+		Debug.Log ("GEEEEEEEEEEEEEEEM2!!!!!! "+PlayerPrefs.GetInt ("gem2"));
 		//levelPassed = PlayerPrefs.GetInt(scene_name,0);
-		Debug.Log ("LEVEL PASSED??????? "+levelPassed);
+		//Debug.Log ("LEVEL PASSED??????? "+levelPassed);
 		addCoins (0); //to initialize label text with right number format
 		this.coins = saved_coins;
 	}
@@ -111,6 +118,19 @@ public class LevelController : MonoBehaviour {
 		if (scene_name.Equals ("Level2")) {
 			Debug.Log ("save scene 2!!!!!!!!!!!");
 			PlayerPrefs.SetInt ("Level2", 1);
+		}
+		PlayerPrefs.Save ();
+	} 
+
+	public void saveGems(){
+		Debug.Log ("SAVE CRYSTALS!!!!!!!!!!!! "+crystals_num);
+		if (scene_name.Equals ("Level1") && crystals_num >= 3) {
+			Debug.Log ("save gems 1 !!!!!!!!!!!");
+			PlayerPrefs.SetInt ("gem1", 1);
+		}
+		if (scene_name.Equals ("Level2") && crystals_num >= 3) {
+			Debug.Log ("save gems 2!!!!!!!!!!!");
+			PlayerPrefs.SetInt ("gem2", 1);
 		}
 		PlayerPrefs.Save ();
 	} 
